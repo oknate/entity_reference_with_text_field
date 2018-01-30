@@ -76,5 +76,18 @@ class EntityReferenceWithTextField extends EntityReferenceItem {
     $values['text'] = $random->sentences(2);
     return $values;
   }
+  
+  /**
+   * {@inheritdoc}
+   */
+  public static function getPreconfiguredOptions() {
+    $options = parent::getPreconfiguredOptions();
+
+    foreach ($options as $delta => $option) {
+      $options[$delta]['label'] = t('@label with textfield', array('@label' => $option['label']));
+    }
+
+    return $options;
+  }
 
 }
